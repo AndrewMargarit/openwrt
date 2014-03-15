@@ -672,6 +672,62 @@ menu "Base system"
 
 endmenu
 
+menu "Administration"
+
+	config PACKAGE_monit
+		tristate "monit.............. System services monitoring utility (with SSL support)"
+		default y if DEFAULT_monit
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libopenssl
+		select PACKAGE_libpthread
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 An utility for monitoring services on a Unix system
+		 	This package is built with SSL support.
+		 http://mmonit.com/monit/
+		 
+
+	config PACKAGE_monit-nossl
+		tristate "monit-nossl..... System services monitoring utility (without SSL support)"
+		default y if DEFAULT_monit-nossl
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libpthread
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 An utility for monitoring services on a Unix system
+		 	This package is built without SSL support.
+		 http://mmonit.com/monit/
+		 
+
+	config PACKAGE_syslog-ng3
+		tristate "syslog-ng3...................................... A powerful syslog daemon"
+		default y if DEFAULT_syslog-ng3
+		default m if ALL
+		select PACKAGE_zlib
+		select PACKAGE_libopenssl
+		select PACKAGE_libeventlog
+		select PACKAGE_libpcre
+		select PACKAGE_libpthread
+		select PACKAGE_libpthread if USE_EGLIBC
+		select PACKAGE_libdbi
+		select PACKAGE_libc
+		select PACKAGE_libwrap
+		select PACKAGE_glib2
+		select PACKAGE_librt
+		select PACKAGE_librt if USE_EGLIBC
+		help
+		 syslog-ng reads and logs messages to the system console, log
+		   files, other machines and/or users as specified by its
+		   configuration file.
+		 http://www.balabit.com/network-security/syslog-ng/opensource-logging-system/
+		 
+
+endmenu
+
 menu "Boot Loaders"
 
 	config PACKAGE_apex
@@ -10078,6 +10134,325 @@ menu "Lua"
 		 Jo-Philipp Wich <jow@openwrt.org>
 
 endmenu
+menu "Ruby"
+	config PACKAGE_ruby
+		tristate "ruby............................... Ruby scripting language (interpreter)"
+		default y if DEFAULT_ruby
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libruby
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby is the interpreted scripting language for quick and  easy 
+		  object-oriented programming.  It has many features to process text files 
+		  and to do system management tasks (as in perl).  It is simple, 
+		  straight-forward, and extensible.
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-cgi
+		tristate "ruby-cgi........................................ Ruby CGI support toolkit"
+		default y if DEFAULT_ruby-cgi
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby CGI support toolkit
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-core
+		tristate "ruby-core........................................ Ruby standard libraries"
+		default y if DEFAULT_ruby-core
+		default m if ALL
+		select PACKAGE_libffi
+		select PACKAGE_libc
+		select PACKAGE_libdb47
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby standard libraries
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-dl
+		tristate "ruby-dl..... Ruby scripting language (dynamic linker support) (adds 5MB+)"
+		default y if DEFAULT_ruby-dl
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby scripting language (dynamic linker support) (adds 5MB+)
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-enc
+		tristate "ruby-enc"
+		default y if DEFAULT_ruby-enc
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby scripting language (character re-coding library) (adds 2MB+)
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-erb
+		tristate "ruby-erb.................. Ruby scripting language (embedded interpreter)"
+		default y if DEFAULT_ruby-erb
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby scripting language (embedded interpreter)
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-gdbm
+		tristate "ruby-gdbm.......................................... Ruby support for gdbm"
+		default y if DEFAULT_ruby-gdbm
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libgdbm
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby support for gdbm
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-gems
+		tristate "ruby-gems.................................... Ruby gems packet management"
+		default y if DEFAULT_ruby-gems
+		default m if ALL
+		select PACKAGE_ruby-openssl
+		select PACKAGE_ruby-zlib
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		select PACKAGE_ruby-erb
+		select PACKAGE_libc
+		select PACKAGE_ruby-yaml
+		select PACKAGE_ruby-webrick
+		select PACKAGE_librt if USE_EGLIBC
+		help
+		 Ruby gems packet management
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-irb
+		tristate "ruby-irb..................... Ruby scripting language (interactive shell)"
+		default y if DEFAULT_ruby-irb
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_ruby-core
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby scripting language (interactive shell)
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-json
+		tristate "ruby-json.......................................... Ruby support for JSON"
+		default y if DEFAULT_ruby-json
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby support for JSON
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-ncurses
+		tristate "ruby-ncurses.................................... Ruby support for ncurses"
+		default y if DEFAULT_ruby-ncurses
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libncurses
+		select PACKAGE_libncursesw
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby support for ncurses
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-nkf
+		tristate "ruby-nkf....................................... Ruby Network Kanji Filter"
+		default y if DEFAULT_ruby-nkf
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby Network Kanji Filter
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-openssl
+		tristate "ruby-openssl.................................... Ruby support for openssl"
+		default y if DEFAULT_ruby-openssl
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libopenssl
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby support for openssl
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-rake
+		tristate "ruby-rake........... Ruby scripting language Ruby Rake (make replacement)"
+		default y if DEFAULT_ruby-rake
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby scripting language Ruby Rake (make replacement)
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-rdoc
+		tristate "ruby-rdoc.............. Ruby scripting language (documentation generator)"
+		default y if DEFAULT_ruby-rdoc
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby scripting language (documentation generator)
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-readline
+		tristate "ruby-readline.................................. Ruby support for readline"
+		default y if DEFAULT_ruby-readline
+		default m if ALL
+		select PACKAGE_libreadline
+		select PACKAGE_libc
+		select PACKAGE_libncurses
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby support for readline
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-rexml
+		tristate "ruby-rexml.............................................. Ruby XML toolkit"
+		default y if DEFAULT_ruby-rexml
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby XML toolkit
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-rss
+		tristate "ruby-rss................................................ Ruby RSS toolkit"
+		default y if DEFAULT_ruby-rss
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby RSS toolkit
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-unit
+		tristate "ruby-unit...................................... Ruby unit testing toolkit"
+		default y if DEFAULT_ruby-unit
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby unit testing toolkit
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-webrick
+		tristate "ruby-webrick..................................... Ruby Web server toolkit"
+		default y if DEFAULT_ruby-webrick
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby Web server toolkit
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-xmlrpc
+		tristate "ruby-xmlrpc......................................... Ruby XML-RPC toolkit"
+		default y if DEFAULT_ruby-xmlrpc
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby XML-RPC toolkit
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-yaml
+		tristate "ruby-yaml.............................................. Ruby YAML toolkit"
+		default y if DEFAULT_ruby-yaml
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby YAML toolkit
+		 http://www.ruby-lang.org/
+		 
+
+	config PACKAGE_ruby-zlib
+		tristate "ruby-zlib.......................................... Ruby support for zlib"
+		default y if DEFAULT_ruby-zlib
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_zlib
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_ruby
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby support for zlib
+		 http://www.ruby-lang.org/
+		 
+
+endmenu
 endmenu
 
 menu "Libraries"
@@ -10179,6 +10554,18 @@ menu "Firewall"
 
 endmenu
 menu "SSL"
+	config PACKAGE_libaxtls
+		tristate "libaxtls........................ Embedded client/server TLSv1 SSL library"
+		default y if DEFAULT_libaxtls
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Embedded client/server TLSv1 SSL library
+		 http://sourceforge.net/projects/axtls
+		 
+
 	config PACKAGE_libcyassl
 		tristate "libcyassl................................................. CyaSSL library"
 		default y if DEFAULT_libcyassl
@@ -10190,6 +10577,69 @@ menu "SSL"
 		 CyaSSL is an SSL library optimized for small footprint, both on disk and for
 		 memory use.
 		 http://www.yassl.com/
+		 
+
+	config PACKAGE_libgnutls
+		tristate "libgnutls.............................................. GNU TLS (library)"
+		default y if DEFAULT_libgnutls
+		default m if ALL
+		select PACKAGE_libgpg-error
+		select PACKAGE_libc
+		select PACKAGE_zlib
+		select PACKAGE_libgcrypt
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 GnuTLS is a project that aims to develop a library which provides a
+		  secure layer, over a reliable transport layer. Currently the GnuTLS
+		  library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+		  This package contains the GnuTLS shared library, needed by other programs.
+		 http://www.gnu.org/software/gnutls/
+		 
+
+	config PACKAGE_libgnutls-extra
+		tristate "libgnutls-extra.................................. GNU TLS (extra library)"
+		default y if DEFAULT_libgnutls-extra
+		default m if ALL
+		select PACKAGE_libgnutls
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 GnuTLS is a project that aims to develop a library which provides a
+		  secure layer, over a reliable transport layer. Currently the GnuTLS
+		  library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+		  This package contains the GnuTLS extra shared library.
+		 http://www.gnu.org/software/gnutls/
+		 
+
+	config PACKAGE_libgnutls-openssl
+		tristate "libgnutls-openssl....................... GNU TLS (OpenSSL compat library)"
+		default y if DEFAULT_libgnutls-openssl
+		default m if ALL
+		select PACKAGE_libgnutls
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 GnuTLS is a project that aims to develop a library which provides a
+		  secure layer, over a reliable transport layer. Currently the GnuTLS
+		  library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+		  This package contains the GnuTLS OpenSSL compatibility layer shared library.
+		 http://www.gnu.org/software/gnutls/
+		 
+
+	config PACKAGE_libmatrixssl
+		tristate "libmatrixssl................................. Embedded SSL implementation"
+		default y if DEFAULT_libmatrixssl
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libpthread
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Embedded SSL implementation
+		 http://www.matrixssl.org/
 		 
 
 	menuconfig PACKAGE_libopenssl
@@ -10227,6 +10677,41 @@ menu "SSL"
 		 
 
 endmenu
+menu "database"
+	config PACKAGE_libsqlite3
+		tristate "libsqlite3....................... SQLite (v3.x) database engine (library)"
+		default y if DEFAULT_libsqlite3
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libpthread
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 SQLite is a small C library that implements a self-contained, embeddable,
+		  zero-configuration SQL database engine.
+		  This package contains the SQLite (v3.x) shared library, used by other
+		  programs.
+		 http://www.sqlite.org/
+		 
+
+endmenu
+	config PACKAGE_glib2
+		tristate "glib2........................................................... glib 2.0"
+		default y if DEFAULT_glib2
+		default m if ALL
+		select PACKAGE_libffi
+		select PACKAGE_zlib
+		select PACKAGE_libpthread
+		select PACKAGE_libpthread if USE_EGLIBC
+		select PACKAGE_libc
+		select PACKAGE_libiconv-full if BUILD_NLS
+		select PACKAGE_libintl-full if BUILD_NLS
+		select PACKAGE_librt if USE_EGLIBC
+		help
+		 The GLib library of C routines
+		 http://www.gtk.org/
+		 
+
 	config PACKAGE_libblkid
 		tristate "libblkid......................................... block device id library"
 		default y if DEFAULT_libblkid
@@ -10299,6 +10784,68 @@ endmenu
 		  for memory-constrained systems like handheld devices.
 		 http://www.hyperrealm.com/libconfig/
 		 Felix Fietkau <nbd@openwrt.org>
+
+	menuconfig PACKAGE_libcurl
+		tristate "libcurl........................ A client-side URL transfer library using "
+		default y if DEFAULT_libcurl
+		default m if ALL
+		select PACKAGE_libcyassl if LIBCURL_CYASSL
+		select PACKAGE_libpthread if LIBCURL_THREADED_RESOLVER
+		select PACKAGE_zlib if LIBCURL_ZLIB
+		select PACKAGE_libgnutls if LIBCURL_GNUTLS
+		select PACKAGE_libpthread if USE_EGLIBC
+		select PACKAGE_libc
+		select PACKAGE_libpolarssl if LIBCURL_POLARSSL
+		select PACKAGE_libaxtls if LIBCURL_AXTLS
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libopenssl if LIBCURL_OPENSSL
+		help
+		 A client-side URL transfer library using 
+		 http://curl.haxx.se/
+		 Imre Kaloz <kaloz@openwrt.org>
+
+
+	  source "feeds/packages/libs/curl/Config.in"
+
+	config PACKAGE_libdb47
+		tristate "libdb47........................................ Berkeley DB library (4.7)"
+		default y if DEFAULT_libdb47
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libxml2
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Berkeley DB library (4.7).
+		 http://www.sleepycat.com/products/db.shtml
+		 W. Michael Petullo <mike@flyn.org>
+
+	config PACKAGE_libdb47xx
+		tristate "libdb47xx.............................. Berkeley DB library (4.7) for C++"
+		default y if DEFAULT_libdb47xx
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_uclibcxx if USE_UCLIBCXX
+		select PACKAGE_libdb47
+		select PACKAGE_libstdcpp if USE_LIBSTDCXX
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Berkeley DB library (4.7).  C++ wrapper.
+		 http://www.sleepycat.com/products/db.shtml
+		 W. Michael Petullo <mike@flyn.org>
+
+	config PACKAGE_libdbi
+		tristate "libdbi......................................................... (library)"
+		default y if DEFAULT_libdbi
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 libdbi implements a database-independent abstraction layer in C.
+		 http://libdbi.sourceforge.net/
+		 
 
 	config PACKAGE_libevent2
 		tristate "libevent2....................... Event notification library (version 2.0)"
@@ -10416,6 +10963,86 @@ endmenu
 		 	threading & locking.
 		 http://www.monkey.org/~provos/libevent/
 		 Jo-Philipp Wich <jow@openwrt.org>
+
+	config PACKAGE_libeventlog
+		tristate "libeventlog........ A new API to format and send structured log messages."
+		default y if DEFAULT_libeventlog
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 A new API to format and send structured log messages.
+		 
+
+	config PACKAGE_libffi
+		tristate "libffi.......................... Foreign Function Interface (FFI) library"
+		default y if DEFAULT_libffi
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 The libffi library provides a portable, high level programming interface to
+		 various calling conventions. This allows a programmer to call any function
+		 specified by a call interface description at run-time.
+		 
+		 FFI stands for Foreign Function Interface. A foreign function interface is the
+		 popular name for the interface that allows code written in one language to call
+		 code written in another language. The libffi library really only provides the
+		 lowest, machine dependent layer of a fully featured foreign function interface.
+		 A layer must exist above libffi that handles type conversions for values passed
+		 between the two languages.
+		 http://sourceware.org/libffi/
+		 
+
+	config PACKAGE_libgcrypt
+		tristate "libgcrypt............................................. GNU crypto library"
+		default y if DEFAULT_libgcrypt
+		default m if ALL
+		select PACKAGE_libgpg-error
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 This is a general purpose cryptographic library based on the code from
+		  GnuPG. It provides functions for all cryptograhic building blocks:
+		  symmetric ciphers (AES, DES, Arcfour, CAST5), hash algorithms (MD5, SHA-1,
+		  RIPE-MD160, SHA-224/256, SHA-384/512), MACs (HMAC for all hash
+		  algorithms), public key algorithms (RSA, DSA), large integer functions,
+		  random numbers and a lot of supporting functions. Some algorithms have
+		  been disabled to reduce size (Blowfish, Twofish, Serpent,
+		  RC2, SEED, Camellia, CRC, MD4, TIGER-192, Whirlpool, ElGamal, ECC).
+		 http://directory.fsf.org/security/libgcrypt.html
+		 
+
+	config PACKAGE_libgdbm
+		tristate "libgdbm............................................. GNU database manager"
+		default y if DEFAULT_libgdbm
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 GNU database manager
+		 http://www.gnu.org/software/gdbm/
+		 
+
+	config PACKAGE_libgpg-error
+		tristate "libgpg-error......................... GnuPG error handling helper library"
+		default y if DEFAULT_libgpg-error
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 An helper library for common error codes and descriptions.
+		 	This is a library that defines common error values for all GnuPG
+		 	components. Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
+		 	Libksba, DirMngr, Pinentry, SmartCard Daemon and possibly more in the
+		 	future.
+		 http://www.gnupg.org/related_software/libgpg-error/
+		 
 
 	config PACKAGE_libiconv
 		tristate "libiconv"
@@ -10601,6 +11228,37 @@ endmenu
 		 http://www.kernel.org/pub/linux/utils/util-linux/
 		 
 
+	config PACKAGE_libmysqlclient
+		tristate "libmysqlclient...................................... MySQL client library"
+		default y if DEFAULT_libmysqlclient
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_zlib
+		select PACKAGE_uclibcxx if USE_UCLIBCXX
+		select PACKAGE_libstdcpp if USE_LIBSTDCXX
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 MySQL client library
+		 http://dev.mysql.com/
+		 
+
+	config PACKAGE_libmysqlclient-r
+		tristate "libmysqlclient-r......................... MySQL client library threadsafe"
+		default y if DEFAULT_libmysqlclient-r
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_zlib
+		select PACKAGE_uclibcxx if USE_UCLIBCXX
+		select PACKAGE_libpthread
+		select PACKAGE_libstdcpp if USE_LIBSTDCXX
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 MySQL client library threadsafe
+		 http://dev.mysql.com/
+		 
+
 	config PACKAGE_libncurses
 		tristate "libncurses..................................... Terminal handling library"
 		default y if DEFAULT_libncurses
@@ -10700,6 +11358,32 @@ endmenu
 
 		source "package/libs/libpcap/Config.in"
 
+	config PACKAGE_libpcre
+		tristate "libpcre..................... A Perl Compatible Regular Expression library"
+		default y if DEFAULT_libpcre
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 A Perl Compatible Regular Expression library
+		 http://www.pcre.org/
+		 
+
+	config PACKAGE_libpcrecpp
+		tristate "libpcrecpp.... C++ wrapper for Perl Compatible Regular Expression library"
+		default y if DEFAULT_libpcrecpp
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libpcre
+		select PACKAGE_libstdcpp
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 C++ wrapper for Perl Compatible Regular Expression library
+		 http://www.pcre.org/
+		 
+
 	config PACKAGE_libpopt
 		tristate "libpopt............................ A command line option parsing library"
 		default y if DEFAULT_libpopt
@@ -10739,6 +11423,20 @@ endmenu
 		help
 		 uClibc RPC library
 		 Felix Fietkau <nbd@openwrt.org>
+
+	config PACKAGE_libruby
+		tristate "libruby......................... Ruby scripting language (shared library)"
+		default y if DEFAULT_libruby
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt
+		select PACKAGE_libpthread
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Ruby scripting language (shared library)
+		 http://www.ruby-lang.org/
+		 
 
 	config PACKAGE_libsocks
 		tristate "libsocks............................................. Dante SOCKS Library"
@@ -10914,6 +11612,32 @@ endmenu
 		 http://www.kernel.org/pub/linux/utils/util-linux/
 		 
 
+	config PACKAGE_libwrap
+		tristate "libwrap........................ Security wrapper library for TCP services"
+		default y if DEFAULT_libwrap
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Security wrapper library for TCP services
+		 ftp://ftp.porcupine.org/pub/security/index.html
+		 
+
+	config PACKAGE_libxml2
+		tristate "libxml2................................................ Gnome XML library"
+		default y if DEFAULT_libxml2
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_zlib
+		select PACKAGE_libpthread
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 A library for manipulating XML and HTML resources.
+		 http://xmlsoft.org/
+		 
+
 	config PACKAGE_linux-atm
 		tristate "linux-atm.............................................. Linux ATM library"
 		default y if DEFAULT_linux-atm
@@ -10966,6 +11690,49 @@ endmenu
 
 menu "Network"
 
+menu "Captive Portals"
+	menuconfig PACKAGE_coova-chilli
+		tristate "coova-chilli...... Wireless LAN HotSpot controller (Coova Chilli Version)"
+		default y if DEFAULT_coova-chilli
+		default m if ALL
+		select PACKAGE_libopenssl if COOVACHILLI_OPENSSL
+		select PACKAGE_libcyassl if COOVACHILLI_CYASSL
+		select PACKAGE_libpthread if USE_EGLIBC
+		select PACKAGE_libc
+		select PACKAGE_librt
+		select PACKAGE_libmatrixssl if COOVACHILLI_MATRIXSSL
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_kmod-tun
+		help
+		 CoovaChilli is an open source access controller for wireless LAN
+		 	access points and is based on ChilliSpot. It is used for authenticating
+		 	users of a wireless (or wired) LAN. It supports web based login (UAM)
+		 	which is today's standard for public HotSpots and it supports Wireless
+		 	Protected Access (WPA) which is the standard of the future.
+		 	Authentication,	authorization and accounting (AAA) is handled by your
+		 	favorite radius server.
+		 http://www.coova.org/CoovaChilli
+		 Imre Kaloz <kaloz@openwrt.org>
+
+
+	  source "feeds/packages/net/coova-chilli/Config.in"
+
+endmenu
+menu "File Transfer"
+	config PACKAGE_curl
+		tristate "curl.................................. A client-side URL transfer utility"
+		default y if DEFAULT_curl
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libcurl
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 A client-side URL transfer utility
+		 http://curl.haxx.se/
+		 Imre Kaloz <kaloz@openwrt.org>
+
+endmenu
 menu "Firewall"
 	config PACKAGE_arptables
 		tristate "arptables....................................... ARP firewalling software"
@@ -12790,6 +13557,21 @@ menu "THC-IPv6 attack and analyzing toolkit"
 		 Jo-Philipp Wich <jow@openwrt.org>
 
 endmenu
+menu "Time Synchronization"
+	config PACKAGE_ntpclient
+		tristate "ntpclient............................. NTP (Network Time Protocol) client"
+		default y if DEFAULT_ntpclient
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 NTP client for setting system time from NTP servers.
+		 http://doolittle.icarus.com/ntpclient/
+		 
+
+endmenu
 menu "VPN"
 	config PACKAGE_openvpn-easy-rsa
 		tristate "openvpn-easy-rsa.. Simple shell scripts to manage a Certificate Authority"
@@ -12862,6 +13644,443 @@ menu "VPN"
 
 endmenu
 menu "Web Servers/Proxies"
+	config PACKAGE_axhttpd
+		tristate "axhttpd.............. A small embedded web server using the axTLS library"
+		default y if DEFAULT_axhttpd
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libaxtls
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 A small embedded web server using the axTLS library
+		 http://www.axtls.co.nr/
+		 
+
+	config PACKAGE_axtlswrap
+		tristate "axtlswrap............... A simple TLS/SSL wrapper using the axTLS library"
+		default y if DEFAULT_axtlswrap
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libaxtls
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 A simple TLS/SSL wrapper using the axTLS library
+		 http://sourceforge.net/projects/axtls
+		 
+
+	menuconfig PACKAGE_lighttpd
+		tristate "lighttpd........................... A flexible and lightweight web server"
+		default y if DEFAULT_lighttpd
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libpcre
+		select PACKAGE_libopenssl if LIGHTTPD_SSL
+		select PACKAGE_libpthread
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 A flexible and lightweight web server
+		 http://www.lighttpd.net/
+		 
+
+
+	config LIGHTTPD_SSL
+		bool "SSL support"
+		depends on PACKAGE_lighttpd
+		default y
+		help
+		  Implements SSL support in lighttpd (using libopenssl). This
+		  option is required if you enable the SSL engine in your
+		  lighttpd confguration file.
+
+	config PACKAGE_lighttpd-mod-access
+		tristate "lighttpd-mod-access........................... Access restrictions module"
+		default y if DEFAULT_lighttpd-mod-access
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Access restrictions module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-accesslog
+		tristate "lighttpd-mod-accesslog............................. Access logging module"
+		default y if DEFAULT_lighttpd-mod-accesslog
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Access logging module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-alias
+		tristate "lighttpd-mod-alias................................ Directory alias module"
+		default y if DEFAULT_lighttpd-mod-alias
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Directory alias module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-auth
+		tristate "lighttpd-mod-auth.................................. Authentication module"
+		default y if DEFAULT_lighttpd-mod-auth
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Authentication module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-cgi
+		tristate "lighttpd-mod-cgi.............................................. CGI module"
+		default y if DEFAULT_lighttpd-mod-cgi
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 CGI module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-cml
+		tristate "lighttpd-mod-cml.............................. Cache Meta Language module"
+		default y if DEFAULT_lighttpd-mod-cml
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Cache Meta Language module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-compress
+		tristate "lighttpd-mod-compress............................. Compress output module"
+		default y if DEFAULT_lighttpd-mod-compress
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_zlib
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Compress output module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-evasive
+		tristate "lighttpd-mod-evasive...................................... Evasive module"
+		default y if DEFAULT_lighttpd-mod-evasive
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Evasive module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-evhost
+		tristate "lighttpd-mod-evhost..................... Exnhanced Virtual-Hosting module"
+		default y if DEFAULT_lighttpd-mod-evhost
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Exnhanced Virtual-Hosting module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-expire
+		tristate "lighttpd-mod-expire........................................ Expire module"
+		default y if DEFAULT_lighttpd-mod-expire
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Expire module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-extforward
+		tristate "lighttpd-mod-extforward............................ Extract client module"
+		default y if DEFAULT_lighttpd-mod-extforward
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Extract client module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-fastcgi
+		tristate "lighttpd-mod-fastcgi...................................... FastCGI module"
+		default y if DEFAULT_lighttpd-mod-fastcgi
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 FastCGI module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-flv_streaming
+		tristate "lighttpd-mod-flv_streaming.......................... FLV streaming module"
+		default y if DEFAULT_lighttpd-mod-flv_streaming
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 FLV streaming module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-magnet
+		tristate "lighttpd-mod-magnet........................................ Magnet module"
+		default y if DEFAULT_lighttpd-mod-magnet
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Magnet module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-mysql_vhost
+		tristate "lighttpd-mod-mysql_vhost.................... Mysql virtual hosting module"
+		default y if DEFAULT_lighttpd-mod-mysql_vhost
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libmysqlclient
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Mysql virtual hosting module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-proxy
+		tristate "lighttpd-mod-proxy.......................................... Proxy module"
+		default y if DEFAULT_lighttpd-mod-proxy
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Proxy module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-redirect
+		tristate "lighttpd-mod-redirect............................. URL redirection module"
+		default y if DEFAULT_lighttpd-mod-redirect
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libpcre
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 URL redirection module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-rewrite
+		tristate "lighttpd-mod-rewrite................................ URL rewriting module"
+		default y if DEFAULT_lighttpd-mod-rewrite
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libpcre
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 URL rewriting module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-rrdtool
+		tristate "lighttpd-mod-rrdtool...................................... RRDtool module"
+		default y if DEFAULT_lighttpd-mod-rrdtool
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 RRDtool module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-scgi
+		tristate "lighttpd-mod-scgi............................................ SCGI module"
+		default y if DEFAULT_lighttpd-mod-scgi
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 SCGI module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-secdownload
+		tristate "lighttpd-mod-secdownload................. Secure and fast download module"
+		default y if DEFAULT_lighttpd-mod-secdownload
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Secure and fast download module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-setenv
+		tristate "lighttpd-mod-setenv.................. Environment variable setting module"
+		default y if DEFAULT_lighttpd-mod-setenv
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Environment variable setting module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-simple_vhost
+		tristate "lighttpd-mod-simple_vhost.................. Simple virtual hosting module"
+		default y if DEFAULT_lighttpd-mod-simple_vhost
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Simple virtual hosting module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-ssi
+		tristate "lighttpd-mod-ssi.............................................. SSI module"
+		default y if DEFAULT_lighttpd-mod-ssi
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libpcre
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 SSI module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-status
+		tristate "lighttpd-mod-status......................... Server status display module"
+		default y if DEFAULT_lighttpd-mod-status
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Server status display module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-trigger_b4_dl
+		tristate "lighttpd-mod-trigger_b4_dl................ Trigger before download module"
+		default y if DEFAULT_lighttpd-mod-trigger_b4_dl
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_libpcre
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 Trigger before download module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-userdir
+		tristate "lighttpd-mod-userdir............................... User directory module"
+		default y if DEFAULT_lighttpd-mod-userdir
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 User directory module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-usertrack
+		tristate "lighttpd-mod-usertrack.............................. User tracking module"
+		default y if DEFAULT_lighttpd-mod-usertrack
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 User tracking module
+		 http://www.lighttpd.net/
+		 
+
+	config PACKAGE_lighttpd-mod-webdav
+		tristate "lighttpd-mod-webdav........................................ WebDAV module"
+		default y if DEFAULT_lighttpd-mod-webdav
+		default m if ALL
+		select PACKAGE_libuuid
+		select PACKAGE_libc
+		select PACKAGE_libxml2
+		select PACKAGE_libsqlite3
+		select PACKAGE_librt if USE_EGLIBC
+		depends on PACKAGE_lighttpd
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 WebDAV module
+		 http://www.lighttpd.net/
+		 
+
 	config PACKAGE_sockd
 		tristate "sockd................................................. Dante SOCKS Daemon"
 		default y if DEFAULT_sockd
@@ -13997,6 +15216,43 @@ menu "Filesystem"
 
 endmenu
 menu "SSL"
+	config PACKAGE_certtool
+		tristate "certtool....................................... GNU TLS (certool utility)"
+		default y if DEFAULT_certtool
+		default m if ALL
+		select PACKAGE_libreadline
+		select PACKAGE_libgnutls
+		select PACKAGE_libc
+		select PACKAGE_libncurses
+		select PACKAGE_libgnutls-extra
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 GnuTLS is a project that aims to develop a library which provides a
+		  secure layer, over a reliable transport layer. Currently the GnuTLS
+		  library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+		  This package contains the GnuTLS certtool utility.
+		 http://www.gnu.org/software/gnutls/
+		 
+
+	config PACKAGE_gnutls-utils
+		tristate "gnutls-utils......................................... GNU TLS (utilities)"
+		default y if DEFAULT_gnutls-utils
+		default m if ALL
+		select PACKAGE_libgnutls
+		select PACKAGE_libc
+		select PACKAGE_libgnutls-extra
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 GnuTLS is a project that aims to develop a library which provides a
+		  secure layer, over a reliable transport layer. Currently the GnuTLS
+		  library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+		  This package contains the GnuTLS gnutls-cli, gnutls-serv, psktool,
+		  and srptool utilities.
+		 http://www.gnu.org/software/gnutls/
+		 
+
 	config PACKAGE_polarssl-progs
 		tristate "polarssl-progs................................... Embedded SSL (programs)"
 		default y if DEFAULT_polarssl-progs
@@ -14064,6 +15320,43 @@ menu "Terminal"
 		 wall sends a message to everybody logged in with their mesg permission
 		  set to yes
 		 http://www.kernel.org/pub/linux/utils/util-linux/
+		 
+
+endmenu
+menu "database"
+	config PACKAGE_mysql-server
+		tristate "mysql-server................................................ MySQL Server"
+		default y if DEFAULT_mysql-server
+		default m if ALL
+		select PACKAGE_libreadline
+		select PACKAGE_libc
+		select PACKAGE_libmysqlclient
+		select PACKAGE_libncursesw
+		select PACKAGE_libpthread
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 MySQL Server
+		 http://dev.mysql.com/
+		 
+
+	config PACKAGE_sqlite3-cli
+		tristate "sqlite3-cli.......................... SQLite (v3.x) database engine (cli)"
+		default y if DEFAULT_sqlite3-cli
+		default m if ALL
+		select PACKAGE_libreadline
+		select PACKAGE_libc
+		select PACKAGE_libncurses
+		select PACKAGE_libsqlite3
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 SQLite is a small C library that implements a self-contained, embeddable,
+		  zero-configuration SQL database engine.
+		  This package contains a terminal-based front-end to the SQLite (v3.x) library
+		  that can evaluate queries interactively and display the results in multiple
+		  formats.
+		 http://www.sqlite.org/
 		 
 
 endmenu
@@ -14684,6 +15977,18 @@ endmenu
 		  expression in their name by replacement
 		 http://www.kernel.org/pub/linux/utils/util-linux/
 		 
+
+	config PACKAGE_restorefactory
+		tristate "restorefactory.......... Mimic original functionality of the reset button"
+		default y if DEFAULT_restorefactory
+		default m if ALL
+		select PACKAGE_libc
+		select PACKAGE_librt if USE_EGLIBC
+		select PACKAGE_libpthread if USE_EGLIBC
+		help
+		 RestoreFactory handles the reset button event and issues a "firstboot" command.
+		 Button and wait time can be configured with a UCI file.
+		 Nuno Goncalves <nunojpg@gmail.com>
 
 	config PACKAGE_robocfg
 		tristate "robocfg....................... BCM5325E/536x switch configuration utility"

@@ -21074,6 +21074,1680 @@ http://openwrt.org/
 @@
 
 
+Source-Makefile: package/feeds/packages/monit/Makefile
+Package: monit
+Version: 5.6-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libpthread +libopenssl
+Menu-Depends: 
+Provides: 
+Build-Variant: ssl
+Section: admin
+Category: Administration
+Title: System services monitoring utility (with SSL support)
+Maintainer: 
+Source: monit-5.6.tar.gz
+Type: ipkg
+Description: 	An utility for monitoring services on a Unix system
+	This package is built with SSL support.
+http://mmonit.com/monit/
+
+@@
+
+Package: monit-nossl
+Version: 5.6-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libpthread
+Menu-Depends: 
+Provides: 
+Build-Variant: nossl
+Section: admin
+Category: Administration
+Title: System services monitoring utility (without SSL support)
+Maintainer: 
+Source: monit-5.6.tar.gz
+Type: ipkg
+Description: 	An utility for monitoring services on a Unix system
+	This package is built without SSL support.
+http://mmonit.com/monit/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/axtls/Makefile
+Package: libaxtls
+Submenu: SSL
+Version: 1.4.9-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Embedded client/server TLSv1 SSL library
+Maintainer: 
+Source: axTLS-1.4.9.tar.gz
+Type: ipkg
+Description: Embedded client/server TLSv1 SSL library
+http://sourceforge.net/projects/axtls
+
+@@
+
+Package: axhttpd
+Submenu: Web Servers/Proxies
+Version: 1.4.9-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libaxtls
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: A small embedded web server using the axTLS library
+Maintainer: 
+Source: axTLS-1.4.9.tar.gz
+Type: ipkg
+Description: A small embedded web server using the axTLS library
+http://www.axtls.co.nr/
+
+@@
+
+Package: axtlswrap
+Submenu: Web Servers/Proxies
+Version: 1.4.9-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libaxtls
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: A simple TLS/SSL wrapper using the axTLS library
+Maintainer: 
+Source: axTLS-1.4.9.tar.gz
+Type: ipkg
+Description: A simple TLS/SSL wrapper using the axTLS library
+http://sourceforge.net/projects/axtls
+
+@@
+
+
+Source-Makefile: package/feeds/packages/ntpclient/Makefile
+Package: ntpclient
+Submenu: Time Synchronization
+Version: 2007_365-4
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +librt
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: NTP (Network Time Protocol) client
+Maintainer: 
+Source: ntpclient_2007_365.tar.gz
+Type: ipkg
+Description: 	NTP client for setting system time from NTP servers.
+http://doolittle.icarus.com/ntpclient/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/libgcrypt/Makefile
+Package: libgcrypt
+Version: 1.5.3-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libgpg-error
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: GNU crypto library
+Maintainer: 
+Source: libgcrypt-1.5.3.tar.bz2
+Type: ipkg
+Description:  This is a general purpose cryptographic library based on the code from
+ GnuPG. It provides functions for all cryptograhic building blocks:
+ symmetric ciphers (AES, DES, Arcfour, CAST5), hash algorithms (MD5, SHA-1,
+ RIPE-MD160, SHA-224/256, SHA-384/512), MACs (HMAC for all hash
+ algorithms), public key algorithms (RSA, DSA), large integer functions,
+ random numbers and a lot of supporting functions. Some algorithms have
+ been disabled to reduce size (Blowfish, Twofish, Serpent,
+ RC2, SEED, Camellia, CRC, MD4, TIGER-192, Whirlpool, ElGamal, ECC).
+http://directory.fsf.org/security/libgcrypt.html
+
+@@
+
+
+Source-Makefile: package/feeds/packages/glib2/Makefile
+Package: glib2
+Version: 2.37.7-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +BUILD_NLS:libiconv-full +BUILD_NLS:libintl-full +zlib +libpthread +libffi
+Menu-Depends: 
+Provides: 
+Build-Depends: glib2/host libpthread zlib libintl libffi !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Depends/host: libintl/host libiconv/host libffi/host
+Build-Types: host
+Section: libs
+Category: Libraries
+Title: glib 2.0
+Maintainer: 
+Source: glib-2.37.7.tar.xz
+Type: ipkg
+Description:   The GLib library of C routines
+http://www.gtk.org/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/eventlog/Makefile
+Package: libeventlog
+Version: 0.2.9-2
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: A new API to format and send structured log messages.
+Maintainer: 
+Source: eventlog_0.2.9.tar.gz
+Type: ipkg
+Description: A new API to format and send structured log messages.
+
+@@
+
+
+Source-Makefile: package/feeds/packages/matrixssl/Makefile
+Package: libmatrixssl
+Submenu: SSL
+Version: 1.2.4-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libpthread
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Embedded SSL implementation
+Maintainer: 
+Source: matrixssl-1.2.4.tar.gz
+Type: ipkg
+Description: Embedded SSL implementation
+http://www.matrixssl.org/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/lighttpd/Makefile
+Package: lighttpd
+Menu: 1
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +LIGHTTPD_SSL:libopenssl +libpcre +libpthread
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: A flexible and lightweight web server
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: A flexible and lightweight web server
+http://www.lighttpd.net/
+
+@@
+Config:
+config LIGHTTPD_SSL
+	bool "SSL support"
+	depends on PACKAGE_lighttpd
+	default y
+	help
+	  Implements SSL support in lighttpd (using libopenssl). This
+	  option is required if you enable the SSL engine in your
+	  lighttpd confguration file.
+@@
+
+Package: lighttpd-mod-access
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Access restrictions module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Access restrictions module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-accesslog
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Access logging module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Access logging module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-alias
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Directory alias module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Directory alias module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-auth
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Authentication module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Authentication module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-cgi
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: CGI module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: CGI module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-cml
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Cache Meta Language module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Cache Meta Language module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-compress
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd +zlib
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Compress output module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Compress output module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-evasive
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Evasive module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Evasive module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-evhost
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Exnhanced Virtual-Hosting module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Exnhanced Virtual-Hosting module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-expire
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Expire module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Expire module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-extforward
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Extract client module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Extract client module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-fastcgi
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: FastCGI module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: FastCGI module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-flv_streaming
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: FLV streaming module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: FLV streaming module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-magnet
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Magnet module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Magnet module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-mysql_vhost
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd +libmysqlclient
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Mysql virtual hosting module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Mysql virtual hosting module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-proxy
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Proxy module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Proxy module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-redirect
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd +libpcre
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: URL redirection module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: URL redirection module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-rewrite
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd +libpcre
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: URL rewriting module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: URL rewriting module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-rrdtool
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: RRDtool module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: RRDtool module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-scgi
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: SCGI module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: SCGI module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-secdownload
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Secure and fast download module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Secure and fast download module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-setenv
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Environment variable setting module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Environment variable setting module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-simple_vhost
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Simple virtual hosting module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Simple virtual hosting module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-ssi
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd +libpcre
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: SSI module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: SSI module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-status
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Server status display module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Server status display module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-trigger_b4_dl
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd +libpcre
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Trigger before download module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: Trigger before download module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-userdir
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: User directory module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: User directory module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-usertrack
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: User tracking module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: User tracking module
+http://www.lighttpd.net/
+
+@@
+
+Package: lighttpd-mod-webdav
+Submenu: Web Servers/Proxies
+Version: 1.4.32-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread lighttpd +libsqlite3 +libuuid +libxml2
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: WebDAV module
+Maintainer: 
+Source: lighttpd-1.4.32.tar.xz
+Type: ipkg
+Description: WebDAV module
+http://www.lighttpd.net/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/tcp_wrappers/Makefile
+Package: libwrap
+Version: 7.6-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Security wrapper library for TCP services
+Maintainer: 
+Source: tcp_wrappers_7.6.tar.gz
+Type: ipkg
+Description: Security wrapper library for TCP services
+ftp://ftp.porcupine.org/pub/security/index.html
+
+@@
+
+
+Source-Makefile: package/feeds/packages/libffi/Makefile
+Package: libffi
+Version: 3.0.11-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Build-Types: host
+Section: libs
+Category: Libraries
+Title: Foreign Function Interface (FFI) library
+Maintainer: 
+Source: libffi-3.0.11.tar.gz
+Type: ipkg
+Description: The libffi library provides a portable, high level programming interface to
+various calling conventions. This allows a programmer to call any function
+specified by a call interface description at run-time.
+
+FFI stands for Foreign Function Interface. A foreign function interface is the
+popular name for the interface that allows code written in one language to call
+code written in another language. The libffi library really only provides the
+lowest, machine dependent layer of a fully featured foreign function interface.
+A layer must exist above libffi that handles type conversions for values passed
+between the two languages.
+http://sourceware.org/libffi/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/restorefactory/Makefile
+Package: restorefactory
+Version: 1-6
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: Mimic original functionality of the reset button
+Maintainer: Nuno Goncalves <nunojpg@gmail.com>
+Source: 
+Type: ipkg
+Description: RestoreFactory handles the reset button event and issues a "firstboot" command.
+Button and wait time can be configured with a UCI file.
+Nuno Goncalves <nunojpg@gmail.com>
+@@
+
+
+Source-Makefile: package/feeds/packages/pcre/Makefile
+Package: libpcre
+Version: 8.11-2
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: A Perl Compatible Regular Expression library
+Maintainer: 
+Source: pcre-8.11.tar.bz2
+Type: ipkg
+Description: A Perl Compatible Regular Expression library
+http://www.pcre.org/
+
+@@
+
+Package: libpcrecpp
+Version: 8.11-2
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libpcre +libstdcpp
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: C++ wrapper for Perl Compatible Regular Expression library
+Maintainer: 
+Source: pcre-8.11.tar.bz2
+Type: ipkg
+Description: C++ wrapper for Perl Compatible Regular Expression library
+http://www.pcre.org/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/libgpg-error/Makefile
+Package: libgpg-error
+Version: 1.9-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: GnuPG error handling helper library
+Maintainer: 
+Source: libgpg-error-1.9.tar.bz2
+Type: ipkg
+Description: 	An helper library for common error codes and descriptions.
+	This is a library that defines common error values for all GnuPG
+	components. Among these are GPG, GPGSM, GPGME, GPG-Agent, libgcrypt,
+	Libksba, DirMngr, Pinentry, SmartCard Daemon and possibly more in the
+	future.
+http://www.gnupg.org/related_software/libgpg-error/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/syslog-ng3/Makefile
+Package: syslog-ng3
+Version: 3.0.5-5
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libpcre +glib2 +libeventlog +libopenssl +libwrap +libpthread +librt +zlib +libdbi
+Menu-Depends: 
+Provides: 
+Build-Depends: !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Section: admin
+Category: Administration
+Title: A powerful syslog daemon
+Maintainer: 
+Source: syslog-ng_3.0.5.tar.gz
+Type: ipkg
+Description:   syslog-ng reads and logs messages to the system console, log
+  files, other machines and/or users as specified by its
+  configuration file.
+http://www.balabit.com/network-security/syslog-ng/opensource-logging-system/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/libdbi/Makefile
+Package: libdbi
+Version: 0.8.3-3
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title:  (library)
+Maintainer: 
+Source: libdbi-0.8.3.tar.gz
+Type: ipkg
+Description:        libdbi implements a database-independent abstraction layer in C.
+http://libdbi.sourceforge.net/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/mysql/Makefile
+Package: mysql-server
+Submenu: database
+Version: 5.1.73-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libmysqlclient +libpthread +libncursesw +libreadline
+Menu-Depends: 
+Provides: 
+Build-Depends: libncurses libreadline libtool libintl libiconv
+Section: utils
+Category: Utilities
+Title: MySQL Server
+Maintainer: 
+Source: mysql-5.1.73.tar.gz
+Type: ipkg
+Description: MySQL Server
+http://dev.mysql.com/
+
+@@
+
+Package: libmysqlclient
+Version: 5.1.73-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +USE_UCLIBCXX:uclibcxx +USE_LIBSTDCXX:libstdcpp +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: libncurses libreadline libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: MySQL client library
+Maintainer: 
+Source: mysql-5.1.73.tar.gz
+Type: ipkg
+Description: MySQL client library
+http://dev.mysql.com/
+
+@@
+
+Package: libmysqlclient-r
+Version: 5.1.73-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +USE_UCLIBCXX:uclibcxx +USE_LIBSTDCXX:libstdcpp +zlib +libpthread
+Menu-Depends: 
+Provides: 
+Build-Depends: libncurses libreadline libtool libintl libiconv
+Section: libs
+Category: Libraries
+Title: MySQL client library threadsafe
+Maintainer: 
+Source: mysql-5.1.73.tar.gz
+Type: ipkg
+Description: MySQL client library threadsafe
+http://dev.mysql.com/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/ruby/Makefile
+Package: ruby
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby scripting language (interpreter)
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description:  Ruby is the interpreted scripting language for quick and  easy 
+ object-oriented programming.  It has many features to process text files 
+ and to do system management tasks (as in perl).  It is simple, 
+ straight-forward, and extensible.
+http://www.ruby-lang.org/
+
+@@
+
+Package: libruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libpthread +librt
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: libs
+Category: Libraries
+Title: Ruby scripting language (shared library)
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby scripting language (shared library)
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-core
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby +libdb47 +libffi
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby standard libraries
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby standard libraries
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-cgi
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby CGI support toolkit
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby CGI support toolkit
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-dl
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby scripting language (dynamic linker support) (adds 5MB+)
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby scripting language (dynamic linker support) (adds 5MB+)
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-enc
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby scripting language (character re-coding library) (adds 2MB+)
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby scripting language (character re-coding library) (adds 2MB+)
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-erb
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby scripting language (embedded interpreter)
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby scripting language (embedded interpreter)
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-gdbm
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby +libgdbm
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby support for gdbm
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby support for gdbm
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-gems
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby +ruby-yaml +ruby-zlib +ruby-openssl +ruby-webrick +ruby-erb
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby gems packet management
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby gems packet management
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-json
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby support for JSON
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby support for JSON
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-irb
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby +ruby-core
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby scripting language (interactive shell)
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby scripting language (interactive shell)
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-ncurses
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby +libncurses +libncursesw
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby support for ncurses
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby support for ncurses
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-nkf
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby Network Kanji Filter
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby Network Kanji Filter
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-openssl
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby +libopenssl
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby support for openssl
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby support for openssl
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-rake
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby scripting language Ruby Rake (make replacement)
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby scripting language Ruby Rake (make replacement)
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-rdoc
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby scripting language (documentation generator)
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby scripting language (documentation generator)
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-readline
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby +libncurses +libreadline
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby support for readline
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby support for readline
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-rexml
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby XML toolkit
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby XML toolkit
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-rss
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby RSS toolkit
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby RSS toolkit
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-unit
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby unit testing toolkit
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby unit testing toolkit
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-webrick
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby Web server toolkit
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby Web server toolkit
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-xmlrpc
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby XML-RPC toolkit
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby XML-RPC toolkit
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-yaml
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby YAML toolkit
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby YAML toolkit
+http://www.ruby-lang.org/
+
+@@
+
+Package: ruby-zlib
+Submenu: Ruby
+Version: 1.9.3-p484-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread ruby +zlib
+Menu-Depends: 
+Provides: 
+Build-Depends: ruby/host !BUILD_NLS:libiconv !BUILD_NLS:libintl
+Build-Types: host
+Section: lang
+Category: Languages
+Title: Ruby support for zlib
+Maintainer: 
+Source: ruby-1.9.3-p484.tar.bz2
+Type: ipkg
+Description: Ruby support for zlib
+http://www.ruby-lang.org/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/gnutls/Makefile
+Package: certtool
+Submenu: SSL
+Version: 2.8.6-2
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libgnutls +libgnutls-extra +libncurses +libreadline
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: GNU TLS (certool utility)
+Maintainer: 
+Source: gnutls-2.8.6.tar.bz2
+Type: ipkg
+Description:  GnuTLS is a project that aims to develop a library which provides a
+ secure layer, over a reliable transport layer. Currently the GnuTLS
+ library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+ This package contains the GnuTLS certtool utility.
+http://www.gnu.org/software/gnutls/
+
+@@
+
+Package: gnutls-utils
+Submenu: SSL
+Version: 2.8.6-2
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libgnutls +libgnutls-extra
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: GNU TLS (utilities)
+Maintainer: 
+Source: gnutls-2.8.6.tar.bz2
+Type: ipkg
+Description:  GnuTLS is a project that aims to develop a library which provides a
+ secure layer, over a reliable transport layer. Currently the GnuTLS
+ library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+ This package contains the GnuTLS gnutls-cli, gnutls-serv, psktool,
+ and srptool utilities.
+http://www.gnu.org/software/gnutls/
+
+@@
+
+Package: libgnutls
+Submenu: SSL
+Version: 2.8.6-2
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +zlib +libgcrypt +libgpg-error
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: GNU TLS (library)
+Maintainer: 
+Source: gnutls-2.8.6.tar.bz2
+Type: ipkg
+Description:  GnuTLS is a project that aims to develop a library which provides a
+ secure layer, over a reliable transport layer. Currently the GnuTLS
+ library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+ This package contains the GnuTLS shared library, needed by other programs.
+http://www.gnu.org/software/gnutls/
+
+@@
+
+Package: libgnutls-extra
+Submenu: SSL
+Version: 2.8.6-2
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libgnutls
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: GNU TLS (extra library)
+Maintainer: 
+Source: gnutls-2.8.6.tar.bz2
+Type: ipkg
+Description:  GnuTLS is a project that aims to develop a library which provides a
+ secure layer, over a reliable transport layer. Currently the GnuTLS
+ library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+ This package contains the GnuTLS extra shared library.
+http://www.gnu.org/software/gnutls/
+
+@@
+
+Package: libgnutls-openssl
+Submenu: SSL
+Version: 2.8.6-2
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libgnutls
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: GNU TLS (OpenSSL compat library)
+Maintainer: 
+Source: gnutls-2.8.6.tar.bz2
+Type: ipkg
+Description:  GnuTLS is a project that aims to develop a library which provides a
+ secure layer, over a reliable transport layer. Currently the GnuTLS
+ library implements the SSL 3.0, TLS 1.0, and TLS 1.1 protocols.
+ This package contains the GnuTLS OpenSSL compatibility layer shared library.
+http://www.gnu.org/software/gnutls/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/sqlite3/Makefile
+Package: libsqlite3
+Submenu: database
+Version: 3071201-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libpthread
+Menu-Depends: 
+Provides: 
+Build-Depends: libncurses libreadline
+Section: libs
+Category: Libraries
+Title: SQLite (v3.x) database engine (library)
+Maintainer: 
+Source: sqlite-autoconf-3071201.tar.gz
+Type: ipkg
+Description:  SQLite is a small C library that implements a self-contained, embeddable,
+ zero-configuration SQL database engine.
+ This package contains the SQLite (v3.x) shared library, used by other
+ programs.
+http://www.sqlite.org/
+
+@@
+
+Package: sqlite3-cli
+Submenu: database
+Version: 3071201-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libsqlite3 +libncurses +libreadline
+Menu-Depends: 
+Provides: 
+Build-Depends: libncurses libreadline
+Section: utils
+Category: Utilities
+Title: SQLite (v3.x) database engine (cli)
+Maintainer: 
+Source: sqlite-autoconf-3071201.tar.gz
+Type: ipkg
+Description:  SQLite is a small C library that implements a self-contained, embeddable,
+ zero-configuration SQL database engine.
+ This package contains a terminal-based front-end to the SQLite (v3.x) library
+ that can evaluate queries interactively and display the results in multiple
+ formats.
+http://www.sqlite.org/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/db47/Makefile
+Package: libdb47
+Version: 4.7.25.NC-6
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libxml2
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Berkeley DB library (4.7)
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: db-4.7.25.NC.tar.gz
+Type: ipkg
+Description:   Berkeley DB library (4.7).
+http://www.sleepycat.com/products/db.shtml
+W. Michael Petullo <mike@flyn.org>
+@@
+
+Package: libdb47xx
+Version: 4.7.25.NC-6
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libdb47 +USE_UCLIBCXX:uclibcxx +USE_LIBSTDCXX:libstdcpp
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Berkeley DB library (4.7) for C++
+Maintainer: W. Michael Petullo <mike@flyn.org>
+Source: db-4.7.25.NC.tar.gz
+Type: ipkg
+Description:   Berkeley DB library (4.7).  C++ wrapper.
+http://www.sleepycat.com/products/db.shtml
+W. Michael Petullo <mike@flyn.org>
+@@
+
+
+Source-Makefile: package/feeds/packages/curl/Makefile
+Package: curl
+Submenu: File Transfer
+Version: 7.35.0-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libcurl
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: A client-side URL transfer utility
+Maintainer: Imre Kaloz <kaloz@openwrt.org>
+Source: curl-7.35.0.tar.bz2
+Type: ipkg
+Description: A client-side URL transfer utility
+http://curl.haxx.se/
+Imre Kaloz <kaloz@openwrt.org>
+@@
+
+Package: libcurl
+Menu: 1
+Version: 7.35.0-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +LIBCURL_POLARSSL:libpolarssl +LIBCURL_CYASSL:libcyassl +LIBCURL_AXTLS:libaxtls +LIBCURL_OPENSSL:libopenssl +LIBCURL_GNUTLS:libgnutls +LIBCURL_ZLIB:zlib +LIBCURL_THREADED_RESOLVER:libpthread
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: A client-side URL transfer library using 
+Maintainer: Imre Kaloz <kaloz@openwrt.org>
+Source: curl-7.35.0.tar.bz2
+Type: ipkg
+Description: A client-side URL transfer library using 
+http://curl.haxx.se/
+Imre Kaloz <kaloz@openwrt.org>
+@@
+Config:
+  source "feeds/packages/libs/curl/Config.in"
+@@
+
+
+Source-Makefile: package/feeds/packages/gdbm/Makefile
+Package: libgdbm
+Version: 1.10-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: GNU database manager
+Maintainer: 
+Source: gdbm-1.10.tar.gz
+Type: ipkg
+Description: GNU database manager
+http://www.gnu.org/software/gdbm/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/libxml2/Makefile
+Package: libxml2
+Version: 2.7.8-2
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +libpthread +zlib
+Menu-Depends: 
+Provides: 
+Section: libs
+Category: Libraries
+Title: Gnome XML library
+Maintainer: 
+Source: libxml2-2.7.8.tar.gz
+Type: ipkg
+Description:   A library for manipulating XML and HTML resources.
+http://xmlsoft.org/
+
+@@
+
+
+Source-Makefile: package/feeds/packages/coova-chilli/Makefile
+Package: coova-chilli
+Menu: 1
+Submenu: Captive Portals
+Version: 1.3.0-3
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread +kmod-tun +librt +COOVACHILLI_MATRIXSSL:libmatrixssl +COOVACHILLI_CYASSL:libcyassl +COOVACHILLI_OPENSSL:libopenssl
+Menu-Depends: 
+Provides: 
+Section: net
+Category: Network
+Title: Wireless LAN HotSpot controller (Coova Chilli Version)
+Maintainer: Imre Kaloz <kaloz@openwrt.org>
+Source: coova-chilli-1.3.0.tar.gz
+Type: ipkg
+Description: 	CoovaChilli is an open source access controller for wireless LAN
+	access points and is based on ChilliSpot. It is used for authenticating
+	users of a wireless (or wired) LAN. It supports web based login (UAM)
+	which is today's standard for public HotSpots and it supports Wireless
+	Protected Access (WPA) which is the standard of the future.
+	Authentication,	authorization and accounting (AAA) is handled by your
+	favorite radius server.
+http://www.coova.org/CoovaChilli
+Imre Kaloz <kaloz@openwrt.org>
+@@
+Config:
+  source "feeds/packages/net/coova-chilli/Config.in"
+@@
+
+
 Source-Makefile: package/system/vsc73x5-ucode/Makefile
 Package: vsc7385-ucode-ap83
 Default: n
