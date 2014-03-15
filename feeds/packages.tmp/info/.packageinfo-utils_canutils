@@ -1,0 +1,93 @@
+Source-Makefile: feeds/packages/utils/canutils/Makefile
+Package: canutils
+Menu: 1
+Version: 4.0.6-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread 
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: CAN userspace utilities and tools
+Maintainer: 
+Source: canutils-4.0.6.tar.bz2
+Type: ipkg
+Description: CAN userspace utilities and tools
+
+@@
+
+Package: canutils-canconfig
+Version: 4.0.6-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread canutils +libsocketcan
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: canconfig package from canutils
+Maintainer: 
+Source: canutils-4.0.6.tar.bz2
+Type: ipkg
+Description: canconfig package from canutils
+
+@@
+
+Package: canutils-candump
+Version: 4.0.6-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread canutils +libsocketcan
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: candump package from canutils
+Maintainer: 
+Source: canutils-4.0.6.tar.bz2
+Type: ipkg
+Description: candump package from canutils
+
+@@
+
+Package: canutils-canecho
+Version: 4.0.6-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread canutils +libsocketcan
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: canecho package from canutils
+Maintainer: 
+Source: canutils-4.0.6.tar.bz2
+Type: ipkg
+Description: canecho package from canutils
+
+@@
+
+Package: canutils-cansend
+Version: 4.0.6-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread canutils +libsocketcan
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: cansend package from canutils
+Maintainer: 
+Source: canutils-4.0.6.tar.bz2
+Type: ipkg
+Description: cansend package from canutils
+
+@@
+
+Package: canutils-cansequence
+Version: 4.0.6-1
+Depends: +libc +USE_EGLIBC:librt +USE_EGLIBC:libpthread canutils +libsocketcan
+Menu-Depends: 
+Provides: 
+Section: utils
+Category: Utilities
+Title: cansequence package from canutils
+Maintainer: 
+Source: canutils-4.0.6.tar.bz2
+Type: ipkg
+Description: cansequence package from canutils
+
+@@
+
+
